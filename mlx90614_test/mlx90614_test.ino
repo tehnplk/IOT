@@ -16,21 +16,24 @@
 #include <Wire.h>
 #include <Adafruit_MLX90614.h>
 
+/***
 #include <BluetoothSerial.h> //Header File for Serial Bluetooth, will be added by default into Arduino
 
 BluetoothSerial ESP_BT; //Object for Bluetooth
+*/
 
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 
 void setup() {
+  
   Serial.begin(115200);
   
   pinMode(LED_BUILTIN,OUTPUT);
 
   //Serial.println("Adafruit MLX90614 test");  
-
-  mlx.begin();  
-  ESP_BT.begin("TMeter");
+  mlx.begin();
+    
+  //ESP_BT.begin("TMeter");
    
   //Serial.println(mlx.readObjectTempC());
  
@@ -44,14 +47,20 @@ void loop() {
   Serial.print("*F\tObject = "); Serial.print(mlx.readObjectTempF()); Serial.println("*F");
   Serial.println();
   */
-  delay(500);
-  float c  = mlx.readObjectTempC();
-  Serial.println();
+  delay(100);
+  float c  = mlx.readObjectTempC()+2.0;
+  //Serial.println();
   Serial.println(c);
-  ESP_BT.println(c);    
-  digitalWrite(LED_BUILTIN,HIGH);
-  delay(500);
-  digitalWrite(LED_BUILTIN,LOW);
+  Serial.flush();
+  if(c > 33){
+    digitalWrite(LED_BUILTIN,HIGH);  
+    delay(1000);
+    digitalWrite(LED_BUILTIN,LOW);
+  }
+  //ESP_BT.println(c);    
+  //digitalWrite(LED_BUILTIN,HIGH);
+  //delay(500);
+  //digitalWrite(LED_BUILTIN,LOW);
   //exit(0);
   
 }

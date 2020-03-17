@@ -35,5 +35,5 @@ void loop() {
   Serial.println("XXXXXX0000000S125M103D 86P 99I17L ?");   
   delay(1000);                       // wait for a second
   digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-  delay(10000);                       // wait for a second
+  delay(5000);                       // wait for a second
 }

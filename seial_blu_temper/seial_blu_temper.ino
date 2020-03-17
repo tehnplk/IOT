@@ -17,9 +17,10 @@ void setup() {
 
 void loop() {
       float c = random(35.0,40.0);
-      ESP_BT.println(c);    
+      ESP_BT.println(c);   
+      Serial.println(c); 
       digitalWrite(LED_BUILTIN, HIGH);
       delay(250);
       digitalWrite(LED_BUILTIN, LOW);
-      delay(750);  
+      delay(750+1000);  
 }
